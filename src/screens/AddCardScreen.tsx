@@ -1,19 +1,19 @@
 /**
  * AddCardScreen component
- * 
+ *
  * This screen allows users to add new cards to their wallet.
  */
 
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TextInput, 
-  TouchableOpacity, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  Alert
+  Alert,
 } from 'react-native';
 import { Card, CardType, Category } from '../types';
 import Theme from '../theme';
@@ -83,12 +83,12 @@ const AddCardScreen: React.FC = () => {
         cashback: {
           [Category.DINING]: 2,
           [Category.TRAVEL]: 3,
-          [Category.OTHER]: 1
+          [Category.OTHER]: 1,
         },
         perks: {
           [Category.DINING]: ['No foreign transaction fees'],
           [Category.TRAVEL]: ['Travel insurance'],
-        }
+        },
       };
 
       // Save card using CardManager
@@ -96,13 +96,13 @@ const AddCardScreen: React.FC = () => {
 
       // Show success message
       Alert.alert('Success', 'Card added successfully!', [
-        { 
-          text: 'OK', 
+        {
+          text: 'OK',
           onPress: () => {
             // Navigate back to home screen
             goBack();
-          } 
-        }
+          },
+        },
       ]);
     } catch (error) {
       Alert.alert('Error', `Failed to add card: ${error instanceof Error ? error.message : 'Unknown error'}`);
@@ -191,14 +191,14 @@ const AddCardScreen: React.FC = () => {
                   key={category}
                   style={[
                     styles.categoryButton,
-                    selectedCategories.includes(category) && styles.categoryButtonSelected
+                    selectedCategories.includes(category) && styles.categoryButtonSelected,
                   ]}
                   onPress={() => toggleCategory(category)}
                 >
-                  <Text 
+                  <Text
                     style={[
                       styles.categoryButtonText,
-                      selectedCategories.includes(category) && styles.categoryButtonTextSelected
+                      selectedCategories.includes(category) && styles.categoryButtonTextSelected,
                     ]}
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -213,7 +213,7 @@ const AddCardScreen: React.FC = () => {
         <TouchableOpacity
           style={[
             styles.submitButton,
-            (!isFormValid() || isSubmitting) && styles.submitButtonDisabled
+            (!isFormValid() || isSubmitting) && styles.submitButtonDisabled,
           ]}
           onPress={handleSubmit}
           disabled={!isFormValid() || isSubmitting}
@@ -224,7 +224,7 @@ const AddCardScreen: React.FC = () => {
         </TouchableOpacity>
 
         {/* Cancel Button */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.cancelButton}
           onPress={goBack}
         >

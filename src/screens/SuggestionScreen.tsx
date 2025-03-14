@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   ScrollView,
   SafeAreaView,
-  TextInput
+  TextInput,
 } from 'react-native';
 import { Card, Category, Transaction, CardSuggestion } from '../types';
 import CardItem from '../components/CardItem';
@@ -34,14 +34,14 @@ const mockCards: Card[] = [
     cashback: {
       dining: 3,
       travel: 5,
-      other: 1
+      other: 1,
     },
     perks: {
       dining: ['No foreign transaction fees'],
-      travel: ['Travel insurance', 'Airport lounge access']
+      travel: ['Travel insurance', 'Airport lounge access'],
     },
     color: '#1A1F71',
-    lastUsed: new Date()
+    lastUsed: new Date(),
   },
   {
     id: '2',
@@ -55,14 +55,14 @@ const mockCards: Card[] = [
     cashback: {
       dining: 4,
       groceries: 4,
-      other: 1
+      other: 1,
     },
     perks: {
       dining: ['$120 dining credit annually'],
-      groceries: ['$120 Uber cash annually']
+      groceries: ['$120 Uber cash annually'],
     },
     color: '#006FCF',
-  }
+  },
 ];
 
 const SuggestionScreen: React.FC = () => {
@@ -104,7 +104,7 @@ const SuggestionScreen: React.FC = () => {
     const transaction: Transaction = {
       category: selectedCategory,
       amount: parseFloat(amount),
-      date: new Date()
+      date: new Date(),
     };
 
     // Get suggestion from AICardSuggester
@@ -141,14 +141,14 @@ const SuggestionScreen: React.FC = () => {
                   key={category}
                   style={[
                     styles.categoryButton,
-                    selectedCategory === category && styles.categoryButtonSelected
+                    selectedCategory === category && styles.categoryButtonSelected,
                   ]}
                   onPress={() => handleCategorySelect(category)}
                 >
                   <Text
                     style={[
                       styles.categoryButtonText,
-                      selectedCategory === category && styles.categoryButtonTextSelected
+                      selectedCategory === category && styles.categoryButtonTextSelected,
                     ]}
                   >
                     {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -177,7 +177,7 @@ const SuggestionScreen: React.FC = () => {
           <TouchableOpacity
             style={[
               styles.getSuggestionButton,
-              (!amount || parseFloat(amount) <= 0 || cards.length === 0) && styles.getSuggestionButtonDisabled
+              (!amount || parseFloat(amount) <= 0 || cards.length === 0) && styles.getSuggestionButtonDisabled,
             ]}
             onPress={getSuggestion}
             disabled={!amount || parseFloat(amount) <= 0 || cards.length === 0}
@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
     color: Theme.Colors.white,
     fontSize: Theme.Typography.fontSize.md,
     fontWeight: Theme.Typography.fontWeight.medium,
-  }
+  },
 });
 
 export default SuggestionScreen;
